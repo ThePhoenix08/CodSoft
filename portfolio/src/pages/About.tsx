@@ -1,9 +1,11 @@
 import React from "react";
 
-type Props = {};
-
-const About = (props: Props) => {
-  return <div>About</div>;
+const About = () => {
+  return (
+    <section className="section flex-1 w-full grid place-items-center">
+      
+    </section>
+  );
 };
 
 export default About;

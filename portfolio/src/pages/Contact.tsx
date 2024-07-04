@@ -1,9 +1,11 @@
 import React from "react";
 
-type Props = {};
-
-const Contact = (props: Props) => {
-  return <div>Contact</div>;
+const Contact = () => {
+  return (
+    <section className="section flex-1 w-full grid place-items-center">
+      Contact
+    </section>
+  );
 };
 
 export default Contact;

@@ -1,9 +1,11 @@
 import React from "react";
 
-type Props = {};
-
-const Skills = (props: Props) => {
-  return <div>Skills</div>;
+const Skills = () => {
+  return (
+    <section className="section flex-1 w-full grid place-items-center">
+      Skills
+    </section>
+  );
 };
 
 export default Skills;

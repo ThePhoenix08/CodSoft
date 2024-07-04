@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Boxes } from "../components/ui/background-boxes.tsx";
 
 import Button from "@mui/joy/Button";
 import IconButton from "@mui/joy/IconButton";
@@ -9,6 +10,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import data from "../data/data.ts";
 import developer_vector from "../assets/developer_vector.svg";
 import resume from "/Resume-Vighnesh-Brahme-v1.pdf";
+import { MobileContext } from "../context/MobileContext.tsx";
 
 type linksObject = {
   linkedin: string;
@@ -17,11 +19,20 @@ type linksObject = {
 
 const Hero: React.FC = () => {
   const socials: linksObject = data.socialLinks;
+  const { isMobile } = useContext(MobileContext);
 
   return (
-    <section className="section h-screen w-screen grid place-items-center">
-      <div className="container flex flex-col-reverse justify-center items-center md:flex-row">
-        <div className="content flex flex-col gap-2">
+    <section className="section flex-1 w-full grid place-items-center overflow-hidden">
+      {/* {isMobile && (
+        <>
+          <div className="fixed inset-0 w-full h-full bg-white z-10 [mask-image:radial-gradient(transparent,white)] pointer-events-none"></div>
+          <div className="fixed w-screen h-screen">
+            <Boxes />
+          </div>
+        </>
+      )} */}
+      <div className="container flex flex-col-reverse justify-center items-center md:flex-row z-20 pointer-events-none">
+        <div className="content flex flex-col gap-2 pointer-events-auto">
           <p className="text-2xl">Hello, I am</p>
           <p className="text-3xl">Vighnesh Brahme</p>
           <p className="text-2xl">Junior Full Stack Developer</p>
@@ -36,7 +47,7 @@ const Hero: React.FC = () => {
               Download Resume
             </Button>
             <Link to="/contact">
-              <Button size="md" variant="outlined" color="neutral">
+              <Button size="md" variant="soft" color="neutral">
                 Contact Info
               </Button>
             </Link>
@@ -58,7 +69,7 @@ const Hero: React.FC = () => {
             </IconButton>
           </div>
         </div>
-        <div className="pic w-[80vw] md:w-[40vw]">
+        <div className="pic w-[80vw] md:w-[40vw] pointer-events-auto">
           <img
             src={developer_vector}
             alt="developer vector image"

@@ -1,9 +1,11 @@
 import React from "react";
 
-type Props = {};
-
-const Projects = (props: Props) => {
-  return <div>Projects</div>;
+const Projects = () => {
+  return (
+    <section className="section flex-1 w-full grid place-items-center">
+      Projects
+    </section>
+  );
 };
 
 export default Projects;
