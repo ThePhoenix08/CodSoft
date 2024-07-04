@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { MobileContext } from "../context/MobileContext.tsx";
 
 import HomeIcon from "@mui/icons-material/Home";
@@ -10,8 +10,21 @@ import ContactMailIcon from "@mui/icons-material/ContactMail";
 import TerminalIcon from "@mui/icons-material/Terminal";
 import AnalyticsIcon from "@mui/icons-material/Analytics";
 
-const Navbar = () => {
-  const [section, setSection] = useState<string>("hero");
+const capitalize = (word: string): string => {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+};
+
+const trimLeftmostSlash = (str: string): string => str.replace(/^\//, "");
+
+const Navbar: React.FC = () => {
+  let { pathname } = useLocation();
+  if (pathname === "/") {
+    pathname = "hero";
+  } else {
+    pathname = trimLeftmostSlash(pathname);
+  }
+
+  const [section, setSection] = useState<string>(pathname);
   const sections: string[] = ["hero", "about", "skills", "projects", "contact"];
   const { isMobile } = useContext(MobileContext);
   const navigate = useNavigate();
@@ -47,30 +60,37 @@ const Navbar = () => {
             "--Radio-actionRadius": "8px",
           }}
         >
-          {sections.map((item) => (
+          {sections.map((item: string) => (
             <Radio
               key={item}
               color="neutral"
               value={item}
               disableIcon
-              label={isMobile ? SectionIcons[item] : item}
+              label={
+                <div className="flex items-center gap-2">
+                  {SectionIcons[item]}
+                  {!isMobile && <span>{capitalize(item)}</span>}
+                </div>
+              }
               variant="soft"
               sx={{
                 px: 2,
                 alignItems: "center",
               }}
               slotProps={{
-                action: ({ checked }) => ({
-                  sx: {
-                    ...(checked && {
-                      bgcolor: "background.surface",
-                      boxShadow: "sm",
-                      "&:hover": {
+                action: ({ checked }) => {
+                  return {
+                    sx: {
+                      ...(checked && {
                         bgcolor: "background.surface",
-                      },
-                    }),
-                  },
-                }),
+                        boxShadow: "sm",
+                        "&:hover": {
+                          bgcolor: "background.surface",
+                        },
+                      }),
+                    },
+                  };
+                },
               }}
             />
           ))}

@@ -12,7 +12,7 @@ const MobileContext = createContext<MobileContextProps>({
 });
 const MobileProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  const matches = useMediaQuery("(min-width:1024px)");
+  const matches = useMediaQuery("(max-width:1024px)");
 
   useEffect(() => {
     setIsMobile(matches);
