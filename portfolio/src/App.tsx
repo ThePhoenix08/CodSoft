@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar.js";
 
 const App: React.FC = () => {
   return (
-    <div className="app w-screen h-screen flex flex-col overflow-hidden">
+    <div className="app w-screen h-screen flex flex-col font-[Inter]">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Hero />} />
@@ -26,4 +26,10 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+
+
+
+
+
 

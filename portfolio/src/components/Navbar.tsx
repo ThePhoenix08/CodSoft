@@ -44,8 +44,8 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="w-screen flex justify-center pb-4 flex-shrink-1 md:h-1/6 md:p-0">
-      <div className="navbar z-30">
+    <nav className="w-screen flex sticky bottom-2 left-0 right-0 justify-center md:static md:h-1/5 h-12">
+      <div className="navbar z-30 md:bottom-16">
         <RadioGroup
           orientation="horizontal"
           aria-labelledby="sections-navbar"
@@ -69,7 +69,9 @@ const Navbar: React.FC = () => {
               label={
                 <div className="flex items-center gap-2">
                   {SectionIcons[item]}
-                  {!isMobile && <span>{capitalize(item)}</span>}
+                  {!isMobile && (
+                    <span className="text-xl">{capitalize(item)}</span>
+                  )}
                 </div>
               }
               variant="soft"
