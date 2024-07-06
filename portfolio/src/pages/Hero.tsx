@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-// import { Boxes } from "../components/ui/background-boxes.tsx";
 
 import Button from "@mui/joy/Button";
 import IconButton from "@mui/joy/IconButton";
@@ -10,7 +9,6 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { socialLinks } from "../data/data.ts";
 import developer_vector from "../assets/developer_vector.svg";
 import resume from "/Resume-Vighnesh-Brahme-v1.pdf";
-import { MobileContext } from "../context/MobileContext.tsx";
 
 type linksObject = {
   linkedin: string;
@@ -19,18 +17,9 @@ type linksObject = {
 
 const Hero: React.FC = () => {
   const socials: linksObject = socialLinks;
-  const { isMobile } = useContext(MobileContext);
 
   return (
     <section className="section flex-1 w-full grid place-items-center overflow-hidden">
-      {/* {isMobile && (
-        <>
-          <div className="fixed inset-0 w-full h-full bg-white z-10 [mask-image:radial-gradient(transparent,white)] pointer-events-none"></div>
-          <div className="fixed w-screen h-screen">
-            <Boxes />
-          </div>
-        </>
-      )} */}
       <div className="container flex flex-col-reverse justify-center items-center md:flex-row z-20 pointer-events-none">
         <div className="content flex flex-col gap-4 pointer-events-auto">
           <p className="text-2xl">Hello, I am</p>
@@ -77,7 +66,6 @@ const Hero: React.FC = () => {
             alt="developer vector image"
             width="100%"
           />
-          {/* TODO => Replace with something interesting */}
         </div>
       </div>
     </section>

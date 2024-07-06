@@ -3,13 +3,11 @@ const socialLinks = {
   github: "https://github.com/ThePhoenix08",
 };
 
-type SubSkill = {
-  name: string;
-  level: "Basic" | "Intermediate" | "Experienced";
-};
-
 type SkillsObj = {
-  [key: string]: SubSkill[];
+  [key: string]: {
+    name: string;
+    level: "Basic" | "Intermediate" | "Experienced";
+  }[];
 };
 
 const skills: SkillsObj = {
@@ -37,4 +35,5 @@ const skills: SkillsObj = {
 };
 
 export { socialLinks, skills };
+
 
