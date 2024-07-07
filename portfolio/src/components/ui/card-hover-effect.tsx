@@ -65,7 +65,6 @@ export const HoverEffect = ({
             <CardDescription>{item.description}</CardDescription>
             <CardButtons liveDemo={item.link} githubRepo={item.repo} />
           </Card>
-          {/* <a href={item.link} className="absolute inset-0 z-30" /> */}
         </div>
       ))}
     </div>

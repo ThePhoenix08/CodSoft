@@ -2,7 +2,7 @@ import React from "react";
 import Typography from "@mui/joy/Typography";
 import SkillBox from "../components/SkillBox";
 import { skills } from "../data/data.ts";
-import SkillIcons from "../components/icons.ts";
+import SkillIcons from "../data/icons.ts";
 
 const renderSkills = (category: keyof typeof skills): JSX.Element[] => {
   return skills[category].map((skill, index) => (

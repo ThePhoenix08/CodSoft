@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Hero from "./pages/Hero.jsx";
-import About from "./pages/About.jsx";
-import Projects from "./pages/Projects.jsx";
-import Skills from "./pages/Skills.jsx";
-import Contact from "./pages/Contact.jsx";
-import Navbar from "./components/Navbar.js";
+import Hero from "./pages/Hero.tsx";
+import About from "./pages/About.tsx";
+import Projects from "./pages/Projects.tsx";
+import Skills from "./pages/Skills.tsx";
+import Contact from "./pages/Contact.tsx";
+import Navbar from "./components/Navbar.tsx";
 
 const App: React.FC = () => {
   return (
@@ -26,6 +26,12 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+
+
+
+
+
 
 
 

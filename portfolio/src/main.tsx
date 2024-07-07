@@ -1,13 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
-import { MobileProvider } from "./context/MobileContext.tsx";
+import { ContextProvider } from "./context/Context.tsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <MobileProvider>
+  <ContextProvider>
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  </MobileProvider>
+  </ContextProvider>
 );
+

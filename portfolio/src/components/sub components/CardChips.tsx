@@ -1,5 +1,5 @@
 import { cn } from "../../utils/cn";
-import SkillIcons from "../icons";
+import SkillIcons from "../../data/icons";
 
 const CardChips = ({
   className,

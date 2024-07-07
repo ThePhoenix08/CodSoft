@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Typography, Button } from "@mui/joy";
-import { MobileContext } from "../context/MobileContext.tsx";
+import { Context } from "../context/Context.tsx";
 
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -11,9 +11,8 @@ import FileOpenIcon from "@mui/icons-material/FileOpen";
 import { socialLinks } from "../data/data";
 
 const Contact: React.FC = () => {
-  const { isMobile } = useContext(MobileContext);
+  const { isMobile } = useContext(Context);
   const size: "lg" | "md" = isMobile ? "md" : "lg";
-  console.log(size);
 
   const [shareStateColor, setShare] = useState<
     "neutral" | "success" | "danger"
