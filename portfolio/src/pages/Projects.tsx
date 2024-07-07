@@ -1,9 +1,18 @@
 import React from "react";
+import { Typography } from "@mui/joy";
 
-const Projects = () => {
+import { HoverEffect } from "../components/ui/card-hover-effect.tsx";
+import { projects } from "../data/data";
+
+const Projects: React.FC = () => {
   return (
     <section className="section flex-1 w-full grid place-items-center">
-      Projects
+      <div className="flex flex-col items-center justify-center">
+        <Typography level="h1">Projects</Typography>
+        <div className="max-w-5xl mx-auto px-8">
+          <HoverEffect items={projects} />
+        </div>
+      </div>
     </section>
   );
 };

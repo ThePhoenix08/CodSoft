@@ -8,11 +8,13 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 import { socialLinks } from "../data/data.ts";
 import developer_vector from "../assets/developer_vector.svg";
-import resume from "/Resume-Vighnesh-Brahme-v1.pdf";
 
 type linksObject = {
   linkedin: string;
   github: string;
+  mailme: string;
+  portfolio: string;
+  resume: string;
 };
 
 const Hero: React.FC = () => {
@@ -31,7 +33,7 @@ const Hero: React.FC = () => {
               variant="solid"
               color="primary"
               component="a"
-              href={resume}
+              href={socials.resume}
             >
               Download Resume
             </Button>

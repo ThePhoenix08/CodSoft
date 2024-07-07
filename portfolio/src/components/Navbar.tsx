@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Radio from "@mui/joy/Radio";
 import RadioGroup from "@mui/joy/RadioGroup";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -44,8 +44,10 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="w-screen flex sticky bottom-2 left-0 right-0 justify-center md:static md:h-1/5 h-12">
-      <div className="navbar z-30 md:bottom-16">
+    <nav
+      className={`w-screen flex sticky bottom-2 left-0 right-0 justify-center md:static md:h-1/5 h-12`}
+    >
+      <div className="navbar z-30 md:bottom-16 transition-all duration-300 ease-in-out">
         <RadioGroup
           orientation="horizontal"
           aria-labelledby="sections-navbar"
@@ -54,10 +56,11 @@ const Navbar: React.FC = () => {
           sx={{
             minHeight: 48,
             padding: "4px",
-            borderRadius: "12px",
+            borderRadius: "100px",
             bgcolor: "neutral.softBg",
-            "--RadioGroup-gap": "4px",
-            "--Radio-actionRadius": "8px",
+            transition: "all 0.3s ease-in-out",
+            "--RadioGroup-gap": "12px",
+            "--Radio-actionRadius": "100px",
           }}
         >
           {sections.map((item: string) => (
@@ -69,7 +72,7 @@ const Navbar: React.FC = () => {
               label={
                 <div className="flex items-center gap-2">
                   {SectionIcons[item]}
-                  {!isMobile && (
+                  {!isMobile && item === section && (
                     <span className="text-xl">{capitalize(item)}</span>
                   )}
                 </div>
@@ -78,6 +81,9 @@ const Navbar: React.FC = () => {
               sx={{
                 px: 2,
                 alignItems: "center",
+                "& .MuiRadio-action": {
+                  transition: "all 0.3s ease-in-out",
+                },
               }}
               slotProps={{
                 action: ({ checked }) => {

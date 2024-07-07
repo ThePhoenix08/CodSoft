@@ -1,0 +1,32 @@
+import { cn } from "../../utils/cn";
+import SkillIcons from "../icons";
+
+const CardChips = ({
+  className,
+  chips,
+}: {
+  className?: string;
+  chips: string[];
+}) => {
+  const SimpleIconsEndpoint: string = "https://cdn.simpleicons.org/";
+
+  return (
+    <div
+      className={cn(
+        "p-2 flex flex-wrap gap-2 rounded-3xl border-2 border-slate-300 w-fit",
+        className
+      )}
+    >
+      {chips.map((chip, index) => (
+        <div key={index} className="w-4 md:w-6">
+          <img
+            src={SimpleIconsEndpoint + SkillIcons[chip]}
+            alt={chip + " icon"}
+          />
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default CardChips;

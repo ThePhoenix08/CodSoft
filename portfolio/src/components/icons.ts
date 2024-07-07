@@ -4,6 +4,7 @@ const SkillIcons: { [key: string]: string } = {
   Javascript: "Javascript",
   SASS: "Sass",
   TailwindCSS: "Tailwindcss",
+  ReactJS: "react",
   MaterialUI: "Mui",
   NodeJS: "Nodedotjs",
   ExpressJS: "Express",
