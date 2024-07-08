@@ -59,7 +59,7 @@ const projects = [
     title: "My New Portfolio",
     description: "A portfolio website for showcasing my skills and projects.",
     link: socialLinks.portfolio,
-    repo: socialLinks.github + "/new-portfolio",
+    repo: socialLinks.github + "/portfolio-v2",
     chips: ["ReactJS", "MaterialUI", "TailwindCSS"],
   },
   {
@@ -93,6 +93,7 @@ const projects = [
 ];
 
 export { socialLinks, skills, projects };
+
 
 
 
