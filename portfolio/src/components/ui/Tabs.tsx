@@ -31,16 +31,15 @@ export const Tabs = ({
   };
 
   const handleThemeToggle = () => {
-    console.log(isDark);
     setDark((prev: boolean) => !prev);
-    console.log(isDark);
+    localStorage.theme = isDark ? "dark" : "light";
   };
 
   return (
     <>
       <div
         className={cn(
-          "flex flex-row items-center justify-center overflow-auto w-full md:w-auto sm:overflow-visible no-visible-scrollbar border-2 md:rounded-3xl bg-slate-100",
+          "flex flex-row items-center justify-center overflow-auto w-full md:w-auto sm:overflow-visible no-visible-scrollbar border-2 md:rounded-3xl bg-slate-100 dark:bg-opacity-10 dark:border-0",
           className
         )}
       >
@@ -48,7 +47,7 @@ export const Tabs = ({
           <button
             key={tab.section}
             onClick={() => handleClick(tab)}
-            className="relative px-4 py-2 rounded-full hover:bg-gray-200"
+            className="relative px-4 py-2 rounded-full hover:bg-gray-200 dark:hover:bg-opacity-5"
             style={{
               transformStyle: "preserve-3d",
             }}
@@ -57,7 +56,7 @@ export const Tabs = ({
               <motion.div
                 layoutId="clickedbutton"
                 transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
-                className="absolute inset-0 bg-gray-300 dark:bg-zinc-800 rounded-full"
+                className="absolute inset-0 bg-gray-300 dark:bg-opacity-20 rounded-full"
               />
             )}
 
@@ -69,7 +68,7 @@ export const Tabs = ({
         ))}
         <button
           onClick={handleThemeToggle}
-          className="relative px-4 py-2 rounded-full hover:bg-gray-200"
+          className="relative px-4 py-2 rounded-full hover:bg-gray-200 dark:hover:bg-opacity-5"
           style={{
             transformStyle: "preserve-3d",
           }}

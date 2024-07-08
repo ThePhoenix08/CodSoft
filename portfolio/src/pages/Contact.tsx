@@ -50,10 +50,12 @@ const Contact: React.FC = () => {
 
   return (
     <section className="section flex-1 w-full grid place-items-center p-4 md:p-0">
-      <div className="flex flex-col items-center justify-center gap-8 border-2 rounded-xl p-8">
-        <Typography level="h1">Contact Me</Typography>
+      <div className="flex flex-col items-center justify-center gap-8 border-2 dark:border-zinc-700 rounded-xl p-8 shadow-lg dark:shadow-slate-800">
+        <Typography level="h1" textColor="inherit">
+          Contact Me
+        </Typography>
         <div className="socials grid grid-cols-2 gap-8 items-center">
-          <Typography fontSize={size} level="h3">
+          <Typography fontSize={size} level="h3" textColor="inherit">
             Drop a Line at{" "}
           </Typography>
           <Button
@@ -61,12 +63,12 @@ const Contact: React.FC = () => {
             href={socialLinks.mailme}
             endDecorator={<EmailIcon />}
             size={size}
-            variant="outlined"
+            variant="soft"
             color="neutral"
           >
             Mail
           </Button>
-          <Typography fontSize={size} level="h3">
+          <Typography fontSize={size} level="h3" textColor="inherit">
             See My Work at
           </Typography>
           <Button
@@ -75,11 +77,11 @@ const Contact: React.FC = () => {
             endDecorator={<GitHubIcon />}
             size={size}
             color="neutral"
-            variant="outlined"
+            variant="soft"
           >
             Github
           </Button>
-          <Typography fontSize={size} level="h3">
+          <Typography fontSize={size} level="h3" textColor="inherit">
             Let's Connect
           </Typography>
           <Button
@@ -88,11 +90,11 @@ const Contact: React.FC = () => {
             endDecorator={<LinkedInIcon />}
             size={size}
             color="neutral"
-            variant="outlined"
+            variant="soft"
           >
             LinkedIn
           </Button>
-          <Typography fontSize={size} level="h3">
+          <Typography fontSize={size} level="h3" textColor="inherit">
             Share My Work
           </Typography>
           <Button
@@ -102,11 +104,11 @@ const Contact: React.FC = () => {
             endDecorator={<ShareIcon />}
             onClick={handleShare}
             size={size}
-            variant="outlined"
+            variant="soft"
           >
             Portfolio
           </Button>
-          <Typography fontSize={size} level="h3">
+          <Typography fontSize={size} level="h3" textColor="inherit">
             View My Resume
           </Typography>
           <Button
@@ -115,7 +117,7 @@ const Contact: React.FC = () => {
             endDecorator={<FileOpenIcon />}
             size={size}
             color="neutral"
-            variant="outlined"
+            variant="soft"
           >
             Resume
           </Button>

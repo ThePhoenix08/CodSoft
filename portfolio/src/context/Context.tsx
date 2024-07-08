@@ -17,16 +17,24 @@ const ContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const viewportWidth = useMediaQuery("(max-width:1024px)");
 
-  const [isDark, setDark] = useState<boolean>(false);
-  const preferredTheme = useMediaQuery("(prefers-color-scheme: dark)");
+  const preferredTheme: boolean =
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches);
+  const htmlObjClassList: DOMTokenList = document.documentElement.classList;
+  const [isDark, setDark] = useState<boolean>(preferredTheme);
 
   useEffect(() => {
     setIsMobile(viewportWidth);
   }, [viewportWidth]);
 
   useEffect(() => {
-    setDark(preferredTheme);
-  }, [preferredTheme]);
+    if (isDark) {
+      htmlObjClassList.add("dark");
+    } else {
+      htmlObjClassList.remove("dark");
+    }
+  }, [isDark]);
 
   return (
     <Context.Provider value={{ isMobile, isDark, setDark }}>

@@ -13,7 +13,7 @@ const CardChips = ({
   return (
     <div
       className={cn(
-        "p-2 flex flex-wrap gap-2 rounded-3xl border-2 border-slate-300 w-fit",
+        "p-2 flex flex-wrap gap-2 rounded-3xl border-2 border-slate-300 w-fit bg-white dark:bg-opacity-10",
         className
       )}
     >

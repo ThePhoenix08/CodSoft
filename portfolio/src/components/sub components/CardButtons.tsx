@@ -13,18 +13,13 @@ const CardButtons = ({
   githubRepo: string;
 }) => {
   return (
-    <div
-      className={cn(
-        "flex gap-2 justify-evenly items-center text-lg",
-        className
-      )}
-    >
+    <div className={cn("flex gap-4 items-center text-xl", className)}>
       <Button
         variant="soft"
         color="neutral"
         href={liveDemo}
         component="a"
-        endDecorator={<OpenInNewIcon fontSize="small" />}
+        endDecorator={<OpenInNewIcon />}
       >
         Live Demo
       </Button>
@@ -33,7 +28,7 @@ const CardButtons = ({
         color="neutral"
         href={githubRepo}
         component="a"
-        endDecorator={<GitHubIcon fontSize="small" />}
+        endDecorator={<GitHubIcon />}
       >
         Github Repo
       </Button>
