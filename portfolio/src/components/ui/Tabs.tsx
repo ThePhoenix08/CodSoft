@@ -2,7 +2,7 @@
 
 import { useContext, useState } from "react";
 import { motion } from "framer-motion";
-import { NavigateFunction, useNavigate } from "react-router-dom";
+import { NavigateFunction, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "../../utils/cn.ts";
 import { Context } from "../../context/Context.tsx";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
@@ -14,6 +14,19 @@ export type Tab = {
   icon: JSX.Element;
 };
 
+const getActiveTab = (propTabs: Tab[]): Tab => {
+  let { pathname } = useLocation();
+  let activeTab;
+  const trimmedPath: string = pathname.substring(1);
+  const foundTab = propTabs.find((tab) => tab.route === trimmedPath);
+  if (foundTab) {
+    activeTab = foundTab;
+  } else {
+    activeTab = propTabs[0];
+  }
+  return activeTab;
+};
+
 export const Tabs = ({
   propTabs,
   className,
@@ -21,9 +34,9 @@ export const Tabs = ({
   propTabs: Tab[];
   className?: string;
 }) => {
-  const [active, setActive] = useState<Tab>(propTabs[0]);
   const { isDark, setDark, isMobile } = useContext(Context);
   const navigate: NavigateFunction = useNavigate();
+  const [active, setActive] = useState<Tab>(getActiveTab(propTabs));
 
   const handleClick = (tab: Tab) => {
     setActive(tab);
@@ -39,8 +52,9 @@ export const Tabs = ({
     <>
       <div
         className={cn(
-          "flex flex-row items-center justify-center overflow-auto w-full md:w-auto sm:overflow-visible no-visible-scrollbar border-2 md:rounded-3xl bg-slate-100 dark:bg-opacity-10 dark:border-0",
-          className
+          "flex flex-row items-center justify-center gap-2 overflow-auto w-full md:w-auto sm:overflow-visible no-visible-scrollbar border-2 md:rounded-3xl bg-slate-100 dark:border-0",
+          className,
+          isMobile ? "dark:bg-neutral-800" : "dark:bg-opacity-10"
         )}
       >
         {propTabs.map((tab) => (
@@ -52,7 +66,7 @@ export const Tabs = ({
               transformStyle: "preserve-3d",
             }}
           >
-            {active.section === tab.section && (
+            {active?.section === tab.section && (
               <motion.div
                 layoutId="clickedbutton"
                 transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}

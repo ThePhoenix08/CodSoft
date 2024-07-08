@@ -19,7 +19,7 @@ const Sections: Tab[] = [
 
 const Navbar: React.FC = () => {
   return (
-    <div className="Navbar w-screen h-fit grid place-items-center fixed bottom-0 md:bottom-12 left-0 right-0 z-50">
+    <div className="Navbar w-screen h-fit grid place-items-center sticky bottom-0 md:bottom-12 left-0 right-0 z-50">
       <Tabs propTabs={Sections} />
     </div>
   );
