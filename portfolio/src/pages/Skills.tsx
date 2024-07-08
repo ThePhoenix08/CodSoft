@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Typography from "@mui/joy/Typography";
 import SkillBox from "../components/SkillBox";
 import { skills } from "../data/data.ts";
 import SkillIcons from "../data/icons.ts";
 import { cn } from "../utils/cn.ts";
+import { TracingBeam } from "../components/ui/TracingBeam.tsx";
+import { Context } from "../context/Context.tsx";
 
 const renderSkills = (category: keyof typeof skills): JSX.Element[] => {
   return skills[category].map((skill, index) => (
@@ -17,23 +19,39 @@ const renderSkills = (category: keyof typeof skills): JSX.Element[] => {
 };
 
 const Skills: React.FC = () => {
+  const { isMobile } = useContext(Context);
   return (
     <section className="section flex-1 flex flex-col p-2 md:p-0 gap-4 items-center justify-center">
       <Typography level="h1" textColor="inherit">
         My Skills
       </Typography>
       <div className="container flex flex-col justify-center items-center md:w-max gap-4">
-        <SkillCategoryBox title="Frontend Web Development" />
-        <SkillCategoryBox title="Backend Web Development" />
-        <SkillCategoryBox
-          title="Others Skills"
-          identifier="Tools and Others"
-          className="md:flex-nowrap"
-        />
+        <ConditionalRender isMobile={isMobile}>
+          <SkillCategoryBox title="Frontend Web Development" />
+          <SkillCategoryBox title="Backend Web Development" />
+          <SkillCategoryBox
+            title="Others Skills"
+            identifier="Tools and Others"
+            className="md:flex-nowrap"
+          />
+        </ConditionalRender>
       </div>
     </section>
   );
 };
+
+const ConditionalRender = ({
+  isMobile,
+  children,
+}: {
+  isMobile: boolean;
+  children: React.ReactNode;
+}) =>
+  isMobile ? (
+    <TracingBeam className="px-12 relative">{children}</TracingBeam>
+  ) : (
+    children
+  );
 
 const SkillCategoryBox = ({
   title,
