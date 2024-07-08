@@ -3,6 +3,7 @@ import Typography from "@mui/joy/Typography";
 import SkillBox from "../components/SkillBox";
 import { skills } from "../data/data.ts";
 import SkillIcons from "../data/icons.ts";
+import { cn } from "../utils/cn.ts";
 
 const renderSkills = (category: keyof typeof skills): JSX.Element[] => {
   return skills[category].map((skill, index) => (
@@ -22,32 +23,41 @@ const Skills: React.FC = () => {
         My Skills
       </Typography>
       <div className="container flex flex-col justify-center items-center md:w-max gap-4">
-        <div className="flex flex-col gap-2 border-2 rounded-xl p-4 w-full dark:bg-zinc-900 dark:border-zinc-700">
-          <Typography level="title-md" textColor="inherit">
-            Frontend Web Development
-          </Typography>
-          <div className="box flex flex-col md:flex-row flex-wrap lg:flex-nowrap gap-4">
-            {renderSkills("Frontend Web Development")}
-          </div>
-        </div>
-        <div className="flex flex-col gap-2 border-2 rounded-xl p-4 w-full dark:bg-zinc-900 dark:border-zinc-700">
-          <Typography level="title-md" textColor="inherit">
-            Backend Web Development
-          </Typography>
-          <div className="box flex flex-col md:flex-row flex-wrap lg:flex-nowrap gap-4">
-            {renderSkills("Backend Web Development")}
-          </div>
-        </div>
-        <div className="flex flex-col gap-2 border-2 rounded-xl p-4 w-full dark:bg-zinc-900 dark:border-zinc-700">
-          <Typography level="title-md" textColor="inherit">
-            Others Skills
-          </Typography>
-          <div className="box flex flex-col md:flex-row flex-wrap md:flex-nowrap gap-4">
-            {renderSkills("Tools and Others")}
-          </div>
-        </div>
+        <SkillCategoryBox title="Frontend Web Development" />
+        <SkillCategoryBox title="Backend Web Development" />
+        <SkillCategoryBox
+          title="Others Skills"
+          identifier="Tools and Others"
+          className="md:flex-nowrap"
+        />
       </div>
     </section>
+  );
+};
+
+const SkillCategoryBox = ({
+  title,
+  identifier,
+  className,
+}: {
+  title: string;
+  identifier?: string;
+  className?: string;
+}): JSX.Element => {
+  return (
+    <div className="flex flex-col gap-2 border-2 rounded-xl p-4 w-full dark:bg-zinc-900 dark:border-zinc-700">
+      <Typography level="title-md" textColor="inherit">
+        {title}
+      </Typography>
+      <div
+        className={cn(
+          "box flex flex-col md:flex-row flex-wrap gap-4",
+          className || "lg:flex-nowrap"
+        )}
+      >
+        {renderSkills(identifier || title)}
+      </div>
+    </div>
   );
 };
 

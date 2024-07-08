@@ -55,75 +55,83 @@ const Contact: React.FC = () => {
           Contact Me
         </Typography>
         <div className="socials grid grid-cols-2 gap-8 items-center">
-          <Typography fontSize={size} level="h3" textColor="inherit">
-            Drop a Line at{" "}
-          </Typography>
-          <Button
-            component="a"
-            href={socialLinks.mailme}
+          <ListItem
+            buttonValue="Mail"
+            line="Drop a Line at"
+            size={size}
             endDecorator={<EmailIcon />}
+            link={socialLinks.mailme}
+          />
+          <ListItem
+            buttonValue="Github"
+            line="See My Work at"
             size={size}
-            variant="soft"
-            color="neutral"
-          >
-            Mail
-          </Button>
-          <Typography fontSize={size} level="h3" textColor="inherit">
-            See My Work at
-          </Typography>
-          <Button
-            component="a"
-            href={socialLinks.github}
             endDecorator={<GitHubIcon />}
+            link={socialLinks.github}
+          />
+          <ListItem
+            buttonValue="LinkedIn"
+            line="Let's Connect"
             size={size}
-            color="neutral"
-            variant="soft"
-          >
-            Github
-          </Button>
-          <Typography fontSize={size} level="h3" textColor="inherit">
-            Let's Connect
-          </Typography>
-          <Button
-            component="a"
-            href={socialLinks.linkedin}
             endDecorator={<LinkedInIcon />}
+            link={socialLinks.linkedin}
+          />
+          <ListItem
+            buttonValue="Portfolio"
+            line="Share My Work"
             size={size}
-            color="neutral"
-            variant="soft"
-          >
-            LinkedIn
-          </Button>
-          <Typography fontSize={size} level="h3" textColor="inherit">
-            Share My Work
-          </Typography>
-          <Button
-            color={shareStateColor}
-            component="a"
-            href={socialLinks.portfolio}
             endDecorator={<ShareIcon />}
+            link={socialLinks.portfolio}
             onClick={handleShare}
+            color={shareStateColor}
+          />
+          <ListItem
+            buttonValue="Resume"
+            line="View My Resume"
             size={size}
-            variant="soft"
-          >
-            Portfolio
-          </Button>
-          <Typography fontSize={size} level="h3" textColor="inherit">
-            View My Resume
-          </Typography>
-          <Button
-            component="a"
-            href={socialLinks.resume}
             endDecorator={<FileOpenIcon />}
-            size={size}
-            color="neutral"
-            variant="soft"
-          >
-            Resume
-          </Button>
+            link={socialLinks.resume}
+          />
         </div>
       </div>
     </section>
+  );
+};
+
+const ListItem = ({
+  line,
+  size,
+  endDecorator,
+  link,
+  buttonValue,
+  onClick,
+  color,
+}: {
+  line: string;
+  size: "md" | "lg";
+  endDecorator: JSX.Element;
+  link: string;
+  buttonValue: string;
+  onClick?: () => void;
+  color?: "neutral" | "success" | "danger";
+}): JSX.Element => {
+  return (
+    <>
+      <Typography fontSize={size} level="h3" textColor="inherit">
+        {line + " "}
+      </Typography>
+      <Button
+        component="a"
+        href={link}
+        endDecorator={endDecorator}
+        size={size}
+        variant="soft"
+        onClick={onClick}
+        color={color || "neutral"}
+      >
+        {buttonValue}
+      </Button>
+    </>
   );
 };
 

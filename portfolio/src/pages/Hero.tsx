@@ -50,6 +50,7 @@ const Hero: React.FC = () => {
               href={socials.linkedin}
               sx={{ "& .MuiSvgIcon-root": { fontSize: 40 } }}
               color="secondary"
+              // i know this option is not valid color, but its fallback works as intended
             >
               <LinkedInIcon />
             </IconButton>
