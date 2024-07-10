@@ -1,6 +1,9 @@
-[submodule "portfolio"]
+[submodule "portfolio-v2"]
 	path = portfolio
-	url = ./portfolio/
-[submodule "task-tracker-app"]
+	url = https://github.com/ThePhoenix08/portfolio-v2
+[submodule "Codsoft-task-tracker-app"]
 	path = task-tracker-app
-	url = ./task-tracker-app/
+	url = https://github.com/ThePhoenix08/Codsoft-task-tracker-app
+[submodule "mern-blog"]
+	path = mern-blog
+	url = https://github.com/ThePhoenix08/mern-blog
