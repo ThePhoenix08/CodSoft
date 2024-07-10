@@ -1,0 +1,6 @@
+[submodule "portfolio"]
+	path = portfolio
+	url = ./portfolio/
+[submodule "task-tracker-app"]
+	path = task-tracker-app
+	url = ./task-tracker-app/
